@@ -1,0 +1,26 @@
+body{margin:0px; padding:0px;}
+.TMcontent{width:100%; height:45px; margin-top: 27px;}
+.TMtimebox1{width:100%; height:45px; border-bottom:1px solid #D7D7D7;}
+.TMleftpanel{width:30%; height:45px; float:left; background:#F7F7F7;}
+.TMrightpanel{width:69%; height:45px; float:left;background:#fff; border-left: 1px solid #DADADA;}
+.TMBREAKrightpanel{width:69%; height:45px; float:left;background:#f2f2f2; border-left: 1px solid #DADADA;}
+.TMtimetext{font:bold 13px Arial, Helvetica, sans-serif; color:#025bab; padding:13px;}
+.TMdropdown{font: bold 13px Arial, Helvetica, sans-serif;color: #025bab; width: 100%;height: 31px;}
+
+
+.TBRtimebox1{width:100%; height:37px; border-bottom:0px solid #D7D7D7; margin-top:10px;}
+.TBRleftpanel{width:30%; height:37px; float:left; background:#fff;}
+.TBRtimetext{font:bold 13px Arial, Helvetica, sans-serif; color:#025bab; padding:6px;}
+.TBRtimetext1{font:bold 13px Arial, Helvetica, sans-serif; color:#025bab; padding:15px;}
+.TBRrightpanel{width:69%; height:37px; float:left;background:#fff; border-left: 0px solid #DADADA;}
+.TBRdropdown{font: bold 13px Arial, Helvetica, sans-serif;color: #025bab; width: 100%;height: 31px;}
+.gobutton{background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+border:1px solid #ccc;-moz-border-radius:5px;    -webkit-border-radius: 5px;    -khtml-border-radius: 5px;    border-radius: 5px;width: 100px;height: 32px;}
