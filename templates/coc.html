@@ -1,0 +1,93 @@
+
+  <head>
+   <style>
+   .cdnametext2 {
+text-align: center;
+font: bold 14px Calibri;
+color: #fff;
+padding: 6px;
+}
+.cdnamebox2 {
+width: 100%;
+    height: 30px;
+    background: #cf2123;
+    position: fixed;
+    top: 44px;
+    z-index: 9;
+}
+.namebox1 {
+width: 100%;
+height: 30px;
+background: #005bab;
+}
+.nametext2 {
+text-align: center;
+font: bold 14px Calibri;
+color: #fff;
+padding: 6px;
+}
+.list .item.item-accordion {
+line-height: 20px;
+padding-top: 0;
+padding-bottom: 0;
+transition: 0.09s all linear;
+text-align: justify;}
+
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;}
+.navlogop1{ float: left;}  
+.navlogop2{    margin-top: 2px;    margin-left: 43px;}
+
+.cocrentsboxpanel1{  margin-top: 28px;}
+   </style>
+   </head>
+
+  <body  ng-controller="MyCtrl">
+  <ion-view >
+   <ion-nav-buttons side="left">
+  <div class="navlogop1"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></div>
+    <div class="navlogop2"><img ng-src="img/logo.png" style=" width: 82%;"  /></div>
+  </ion-nav-buttons>  
+ <div class="cdnamebox2">
+      <div class="cdnametext2"> <span>CODE OF CONDUCT</span> </div>
+    </div>
+    <ion-content>
+    
+   <div class="cocrentsboxpanel1">
+     <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+         
+          <p ng-bind-html="item"></p>
+         
+          </ion-item>
+        </div>
+      </ion-list>
+      <table border="1" cellpadding="5" cellspacing="0" width="100%" class="subtextfont1"  style="width: 90%;  margin-left: auto;    margin-right: auto;   margin-bottom: 20px;">  
+	  <tbody>
+                <tr>
+                    <td style="text-align: left">
+                        <b>NOTE: </b>
+                        <br>
+                        The school may from time to time amend, modify or cancel policies, provisions, rules,
+                        regulations and procedures as may be necessary.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </ion-content>
+
+
+</body>

@@ -1,0 +1,50 @@
+<ion-view hide-nav-bar="true">
+<div class="bar bar-header bar-stable">
+   <h1 class="title">Event application</h1>
+</div>
+<div class="modal">
+
+  <content>
+    <form ng-submit="doLogin()">
+    
+      <div class="list">
+        <label class="item item-input">
+         <i class="icon icon ion-email"/>
+          <input type="text"     placeholder="Email" ng-model="loginData.username">
+        </label>
+		<br/>
+        <label class="item item-input">
+         <i class="icon icon ion-locked"/>
+          <input type="password"    placeholder="Password" ng-model="loginData.password">
+        </label>
+        <br/>
+		 <label class="item" style="padding:0px; border:0px; float:right;">
+          <button class="button button-large"    >Sign Up</button> &nbsp;<button class="button button-large icon ion-log-in" type="submit"  >Login</button>
+          
+        </label>
+		<!--
+        <div style="width:100%; height:50px;">
+        <div style="width:58%; height:auto; float:left;">
+         <button class="button button-clear button-positive" style="border:0px; margin:7px;" type="button" ng-click="forgot()"> Forgot Password </button>
+        </div>
+        <div style="width:37%; height:auto; float:left;">
+		<input type="checkbox" ng-model="checkboxModel.value1" ng-true-value="'YES'" ng-false-value="'NO'"> Remember me
+      
+        
+        </div>     
+        </div>
+        -->
+        
+		
+              
+      </div>
+    </form>
+  </ion>
+
+
+</div>
+   <div class="bar bar-footer bar-stable">
+   <h1 class="title">Designed By ::.2016</h1>
+</div>
+   </ion-view>
+

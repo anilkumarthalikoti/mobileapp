@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+   <link href="css/att.css" rel="stylesheet" type="text/css" />
+    <style>
+   .loading-container .loading {  padding: 20px;  border-radius: 5px;  background-color: rgba(0, 0, 0, 0);  color: #fff;  text-align: center;
+  text-overflow: ellipsis;  font-size: 15px;}
+        .cdnametext2 {
+text-align: center;
+font: bold 14px Calibri;
+color: #fff;
+padding: 6px;
+}
+.cdnamebox2 {
+width: 100%;
+height: 30px;
+background: #cf2123;
+}
+.namebox1 {
+width: 100%;
+height: 30px;
+background: #005bab;
+}
+.nametext2 {
+text-align: center;
+font: bold 14px Calibri;
+color: #fff;
+padding: 6px;
+}
+
+.ABTcontent {	width:100%;	height:30px; margin-top:10px;}
+.ABTcontent22{width:100%;	height:30px; margin-top:0px;}
+.ABTleft {	width: 45%;height: 30px;float: left;margin-left: 12px;}
+.ABTright {	width:50%;	height:30px;	float:left;}
+.ABTTotaltext {	width:50%;	height:auto;	font:normal 14px Verdana, Arial, Helvetica, sans-serif;	color:#000;	float:left;}
+.ABTPrsenttext {	width:50%;	height:auto;	font:normal 14px Verdana, Arial, Helvetica, sans-serif;	color:#69B300;	float:left;}
+.ABTAbsenttext {	width:50%;	height:auto;	font:normal 14px Verdana, Arial, Helvetica, sans-serif;	color:#FF0000;	float:left;}
+
+.Junbox1 {width: 100%;height: 70px;background: #96ff00;float: left;border: 3px solid #003e75;}
+.octbox1 {width: 100%;height: 70px;background: #dedede;float: left;border: 3px solid #003e75;}
+
+.has-header {top: 92px;}
+.tab-item.tab-item-active {background:#1d73be;border-bottom: 3px solid #fff; color:#fff;}
+.valueofredbox3{margin-top: -58px;}
+progress {
+	width: 100%;
+height: 65px;
+display: block;
+-webkit-appearance: none;
+border: none;
+/* position: absolute; */
+margin-top: -30px;
+	
+}
+
+/* All good till now. Now we'll style the background */
+progress::-webkit-progress-bar {
+ background: transparent;
+ border-radius: 1px;
+ padding: 2px;
+ border:0px solid #ccc;
+  transform:rotate(180deg);
+    -ms-transform:rotate(180deg); /* IE 9 */
+    -moz-transform:rotate(180deg); /* Firefox */
+    -webkit-transform:rotate(180deg); /* Safari and Chrome */
+    -o-transform:rotate(180deg); /* Opera */
+ 
+}
+
+/* Now the value part */
+progress::-webkit-progress-value {
+ border-radius: 1px;
+ box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+background:red;
+
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+ -webkit-animation: move 5s linear 0 infinite;
+
+}
+
+/* That's it! Now let's try creating a new stripe pattern and animate it using animation and keyframes properties  */
+
+@-webkit-keyframes move {
+ 0% {
+background-position: 0px 0px, 0 0, 0 0
+}
+ 100% {
+background-position: -100px 0px, 0 0, 0 0
+}
+}
+.navlogop1{ float: left;}
+.navlogop2{    margin-top: 2px;    margin-left: 43px;}
+
+    </style>
+	
+	
+   <!--  <link href="lib/ionic/css/ionic.css" rel="stylesheet"> -->
+</head>
+<body ng-controller="MyattCtrl">
+    <ion-view>
+   <ion-nav-buttons side="left">
+   <div class="navlogop1"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></div>
+    <div class="navlogop2"><img ng-src="img/logo.png"  style=" width: 82%;"  /></div>
+  </ion-nav-buttons>
+
+  <ion-tabs class="tabs-top tabs-positive">
+        <ion-tab title="Current Month">
+<ion-content>
+   <div>  
+  
+    <div class="cdnamebox2">
+      <div class="cdnametext2"> <span>Current Month Attendance</span> </div>
+    </div>  
+	<b>{{attendmessage}}</b>
+	
+	<div ng-show='attenmonth'>
+    <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div> 
+
+    <div class="ABTcontent">
+  <div class="ABTleft">
+    <div class="ABTTotaltext">Total</div>
+    <div class="ABTTotaltext">{{mTotal}}</div>
+  </div>
+  <div class="ABTright">
+    <div class="ABTTotaltext">Avg</div>
+    <div class="ABTTotaltext">{{mavg | number:2}}%</div>
+  </div>
+</div>
+  
+<div class="ABTcontent22">
+  <div class="ABTleft">
+    <div class="ABTPrsenttext">Present</div>
+    <div class="ABTPrsenttext">{{mPresent}}</div>
+  </div>
+  <div class="ABTright">
+    <div class="ABTAbsenttext">Absent</div>
+    <div class="ABTAbsenttext">{{mavgabs}} Days</div>
+  </div>
+</div>
+
+  </div>
+  </div>
+</ion-content>
+        </ion-tab>
+  <ion-tab title="Academic Year">
+  <ion-content>
+    <div class="cdnamebox2">
+      <div class="cdnametext2"> <span>{{currentyear}} </span> </div>
+    </div>
+	<b>{{attendmessage}}</b>
+	<div ng-show='attenyear'>
+    <div class="calbox1">
+    <div class="calfr1">
+	
+	  <div class="calcoloum2">
+        <div class="" ng-class="{'Junbox1': myApr, 'octbox1': !myApr}">
+          <div class="connerbluebox1" ng-show="myApr">
+        	<div class="valuetext1">{{paapr}} %</div>
+        </div>
+          <div class="jantext">Apr</div>
+           <div class="valueofredbox3"> <progress max="100" value={{aaapr}}></progress></div>
+          <!-- <div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+
+
+
+
+ <div class="calcoloum3">
+        <div class="" ng-class="{'Junbox1': myMay, 'octbox1': !myMay}">
+          <div class="connerbluebox1" ng-show="myMay">
+        	<div class="valuetext1">{{pamay}} %</div>
+        </div>
+          <div class="jantext">May</div>
+           <div class="valueofredbox3"> <progress max="100" value={{aamay}}></progress></div>
+          <!-- <div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+	
+      <div class="calcoloum1">
+        <div class="" ng-class="{'Junbox1': myJun, 'octbox1': !myJun}">
+          <div class="connerbluebox1" ng-show="myJun" >
+            <div class="valuetext1">{{pajun}} %</div>
+           
+          </div>
+          <div class="jantext">Jun</div>
+         <div class="valueofredbox3"> <progress max="100" value={{aajun}}></progress></div>
+           <!--<div class="valueofredbox1"></div>-->
+
+        </div>
+      </div>
+      <div class="calcoloum2">
+        <div class="" ng-class="{'Junbox1': myJul, 'octbox1': !myJul}">
+          <div class="connerbluebox1" ng-show="myJul">
+            <div class="valuetext1">{{pajul}} %</div>
+          </div>
+          <div class="jantext">Jul</div>
+            <div class="valueofredbox3"> <progress max="100" value={{aajul}}></progress></div>
+          <!--<div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+      <div class="calcoloum3">
+        <div class="" ng-class="{'Junbox1': myAug, 'octbox1': !myAug}">
+          <div class="connerbluebox1" ng-show="myAug">
+            <div class="valuetext1">{{paaug}} %</div>
+          </div>
+          <div class="jantext">Aug</div>
+          <div class="valueofredbox3"> <progress max="100" value={{aaaug}}></progress></div>
+        </div>
+      </div>
+	  <div class="calcoloum1">
+        <div class="" ng-class="{'Junbox1': mySep, 'octbox1': !mySep}">
+          <div class="connerbluebox1" ng-show="mySep">
+            <div class="valuetext1">{{pasep}} %</div>
+          </div>
+          <div class="jantext">Sep</div>
+          <div class="valueofredbox3"> <progress max="100" value={{aasep}}></progress></div>
+          <!--<div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+	  
+    </div>
+    <div class="calfr1">
+      
+      <div class="calcoloum2">
+        <div class="" ng-class="{'Junbox1': myOct, 'octbox1': !myOct}">
+          <div class="connerbluebox1" ng-show="myOct">
+        	<div class="valuetext1">{{paoct}} %</div>
+        </div>
+          <div class="jantext">Oct</div>
+            <div class="valueofredbox3"> <progress max="100" value={{aaoct}}></progress></div>
+        </div>
+      </div>
+      <div class="calcoloum3">
+        <div class="" ng-class="{'Junbox1': myNov, 'octbox1': !myNov}">
+          <div class="connerbluebox1" ng-show="myNov">
+        	<div class="valuetext1">{{panov}} %</div>
+        </div>
+          <div class="jantext">Nov</div>
+           <div class="valueofredbox3"> <progress max="100" value={{aanov}}></progress></div>
+          <!-- <div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+	   <div class="calcoloum1">
+        <div class="" ng-class="{'Junbox1': myDec, 'octbox1': !myDec}">
+          <div class="connerbluebox1" ng-show="myDec">
+        	<div class="valuetext1">{{padec}} %</div>
+        </div>
+          <div class="jantext">Dec</div>
+           <div class="valueofredbox3"> <progress max="100" value={{aadec}}></progress></div>           
+        </div>
+      </div>
+    </div>
+    <div class="calfr1">
+     
+      <div class="calcoloum2">
+        <div class="" ng-class="{'Junbox1': myJan, 'octbox1': !myJan}">
+          <div class="connerbluebox1" ng-show="myJan">
+        	<div class="valuetext1">{{pajan}} %</div>
+        </div>
+          <div class="jantext">Jan</div>
+            <div class="valueofredbox3"> <progress max="100" value={{aajan}}></progress></div>
+        </div>
+      </div>
+      <div class="calcoloum3">
+        <div class="" ng-class="{'Junbox1': myFeb, 'octbox1': !myFeb}">
+          <div class="connerbluebox1" ng-show="myFeb">
+        	<div class="valuetext1">{{pafeb}} %</div>
+        </div>
+          <div class="jantext">Feb</div>
+          <div class="valueofredbox3"> <progress max="100" value={{aafeb}}></progress></div>
+          <!-- <div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+	    <div class="calcoloum1">
+        <div class="" ng-class="{'Junbox1': myMar, 'octbox1': !myMar}">
+          <div class="connerbluebox1" ng-show="myMar">
+        	<div class="valuetext1">{{pamar}} %</div>
+        </div>
+          <div class="jantext">Mar</div>
+           <div class="valueofredbox3"> <progress max="100" value={{aamar}}></progress></div>
+          <!-- <div class="valueofredbox1"></div>-->
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="ABTcontent">
+  <div class="ABTleft">
+    <div class="ABTTotaltext">Total</div>
+    <div class="ABTTotaltext">{{yTotal}}</div>
+  </div>
+  <div class="ABTright">
+    <div class="ABTTotaltext">Avg</div>
+    <div class="ABTTotaltext">{{yavg | number:2}}%</div>
+  </div>
+</div>
+<div class="ABTcontent22">
+  <div class="ABTleft">
+    <div class="ABTPrsenttext">Present</div>
+    <div class="ABTPrsenttext">{{yPresent}}</div>
+  </div>
+  <div class="ABTright">
+    <div class="ABTAbsenttext">Absent</div>
+    <div class="ABTAbsenttext">{{yavgabs}} Days</div>
+  </div>
+</div>
+</div>
+  </ion-content>
+  </ion-tab>
+  </ion-view>
+</body>
+</html>

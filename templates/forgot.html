@@ -1,0 +1,41 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">Forgot Password </h1>
+	
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeforgot()"><img src="http://ebms.eliteprocon.in/testlayout/www/img/mcicon.jpg" /></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+ 
+    <form ng-submit="doForgot()">
+       <div align="center"><img ng-src="img/loginlogo.png" alt="St. Andrews School" /></div>
+      <div class="list">
+        <label class="item item-input">
+          
+          <input type="text" style="border:1px solid #ccc;" placeholder="Name" ng-model="forgot.sname">
+        </label>
+        <label class="item item-input">
+         
+          <input type="text"  style="border:1px solid #ccc;" placeholder="Id" ng-model="forgot.Id">
+        </label>
+        <label class="item item-input">
+        
+          <input type="text"  style="border:1px solid #ccc;" placeholder="DOB yyyy-mm-dd" ng-model="forgot.DOB">
+        </label>
+        
+        
+        
+        
+        <label class="item">
+          <button class="button button-block butt on-positive" type="submit" style="background:#4a87ee; color:#fff;">Submit</button>
+        </label>
+        
+        <label class="item item-input">
+          <div style="width:100%; height:30px; color:Red;">{{message1}} </div> 
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>
+

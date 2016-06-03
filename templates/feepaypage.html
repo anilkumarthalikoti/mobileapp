@@ -1,0 +1,179 @@
+<head>
+<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+  <!--  <link href="css/att.css" rel="stylesheet" type="text/css" /> -->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+<style>
+.loading-container .loading {  padding: 20px;  border-radius: 5px;  background-color: rgba(0, 0, 0, 0);  color: #fff;  text-align: center;
+  text-overflow: ellipsis;  font-size: 15px;}
+.Paymentty1{    background-color: #265FBF;    height: 31px;    text-align: center;    line-height: 30px;
+    color: #fff; font-size: 13px;}
+.Paymentty1box1{height: 34px;    line-height: 34px;    background-color: #E8E8E8;    padding-left: 13px;   width: 100%;}	
+.secpanlejk1{    width: 64px;    height: 30px;    border: 0px;    background-color: #E8E8E8;    margin-left: 20px;}	
+.freecodeb1{    width: 100%;    height: 30px;    background-color: rgb(161, 171, 8);    color: #fff;    line-height: 28px;}
+.freecodeb2{    width: 100%;    background-color: #F5F7D6;    line-height: 31px;    text-align: center;}
+.freecodeb3{      width: 100%;    background-color: #FEFFED;    line-height: 31px;    text-align: left;    border-bottom: 1px solid #B8BB81;}	
+.palytboxg1{    width: 100%;    height: 38px;    background-color: #548A0E;    line-height: 35px;
+    color: #fff;    padding-left: 10px}
+.palybuttonkl1{    margin-left: 10px;       border: 0px;    padding: 10px;
+    color: #fff;    height: 37px;background-color: rgb(255, 73, 0);
+    border-left: 2px solid #fff;float: right;
+    line-height: 13px;    border-right: 2px solid #fff;}
+.tot9{    width: 100%;    height: 34px;    background-color: #52AB08;    line-height: 34px;    
+color: #fff;text-align: right;    padding-right: 19px;}
+.navlogop1{ float: left;}  
+.navlogop2{    margin-top: 2px;    margin-left: 43px;}
+
+</style>
+	</head>
+	<body ng-controller='feectrl'>
+<ion-view title="">
+  <ion-nav-buttons side="left">
+  <div class="navlogop1"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></div>
+    <div class="navlogop2"><img ng-src="img/logo.png" style=" width: 82%;"  /></div>
+  </ion-nav-buttons>
+  
+
+
+    <ion-tabs class="tabs-top tabs-positive">
+
+        <ion-tab title="Pay Now">
+             <ion-content has-header="true">
+			 <b>{{paymsg}}</b>
+         <div ng-show='paycurmonth'>
+       
+    <!--  <div class="Paymentty1"><b>Payment Details</b></div> -->
+     <div class="Paymentty1box1">
+ Month : <select class="secpanlejk1" data-ng-model='feetst' data-ng-options="a.monthdisplay for a in monthvar | unique:'monthdisplay'" data-ng-change='testclick()' ng-disabled="disableSelect">
+   </select>
+   <!-- <input type='text' ng-model='feetst'> -->
+   </div>
+
+   <table border='1' width="100%">
+   <tr class="freecodeb1"> <th>Fee Code </th><th> Fee Head Name </th>
+
+   <td>{{feetst.monthdisplay}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-repeat="fee2 in displayyearlypay | filter: { firstmonth: feetst.monthdisplay  } : true">
+   <td>{{fee2.feehead_code}}</td><td>{{fee2.feehead_name}}</td><td>{{fee2.amount  || "0"}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-model='dmnpm' ng-repeat="fee1 in displaymonthsamount| orderBy:'feehead_code'">
+   <td>{{fee1.feehead_code}}</td>  <td> {{fee1.feehead_name}} </td>  <td> {{fee1[feetst.month]}} </td>  </tr>
+   
+   
+   <tr class="freecodeb3" ng-repeat="fee3 in displaybuspay | filter: { monthno: feetst.no  } : true">
+   <td>{{fee3.feehead_code}}</td><td>{{fee3.feehead_name}} </td><td>{{fee3.amt}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-repeat='fee4 in displaylibfines'>
+   <td>{{fee4.fine_code}}</td><td>{{fee4.finehead_name}}</td><td>{{fee4.amount}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-repeat='fee5 in feefines'>
+   <td>{{fee5.feehead_code}}</td><td>{{fee5.feehead_name}}</td><td>{{fee5.amount}}</td>
+   </tr>
+  
+   </table>
+
+   
+   <div class="palytboxg1" ng-show='onpayment'>
+    
+   <b>Total : {{ftotal}}</b>
+   <input type='button' class="palybuttonkl1" value='Online Payment' ng-click='testpay()'>
+ 
+   </div>
+	</div>
+
+        </ion-content>
+     
+      </ion-tab>
+
+
+
+
+
+      <ion-tab  title="History">
+     
+        <ion-content has-header="true">
+		<div ng-show='feehistory'>
+    <div class="Paymentty1box1">
+ Month :     
+<select class="secpanlejk1" ng-model='sfee' ng-options='a.month_paid for a in displaymonths | unique:"month_paid"'>
+	</select> 
+	</div>
+	
+	 <table border='1' width="100%">
+	 <tr class="freecodeb1"> <th>Fee Code </th><th> Fee Head Name </th>
+
+   <td>{{sfee.month_paid}}</td>
+   </tr>
+	   <tr class="freecodeb3" ng-model='dmp' ng-repeat="fee in displaymonths | filter:sfee.month_paid | orderBy:'feehead_code'">
+<!--    <td>{{fee.month_paid}} </td> --><td>{{fee.feehead_code}}</td><td> {{fee.feehead_name}} </td><td> {{fee.amount}}</td>
+   </tr>
+   </table>
+   <div class="tot9" ng-model='dmnp' ng-repeat="fee in displaymonths | filter:sfee.month_paid | unique:'total_amount'">
+   
+   <b>Total :  {{fee.total_amount}}</b>
+  
+   </div>
+	
+     </div>
+	 {{feehistorymessage}}
+        </ion-content>
+      </ion-tab>
+	  
+      <ion-tab  title="Future">
+     
+        <ion-content has-header="true">
+         
+       
+    <!-- <div class="Paymentty1"><b>Payment Details</b></div> -->
+	 <b>{{paymsg}}</b>
+	
+     <div  ng-controller='feectrl' ng-show='onpayment'>
+	 <div class="Paymentty1box1">
+   Month :  <select class="secpanlejk1" data-ng-model='feetst11' data-ng-options="a.monthdisplay for a in monthvar | unique:'monthdisplay'" data-ng-change='getfeepaymonthss()'>
+   </select>
+   </div>
+
+
+   <table border='1' width="100%">
+   <tr class="freecodeb1"> <th>Fee Code </th><th> Fee Head Name </th>
+
+   <td>{{feetst11.monthdisplay}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-repeat="fee2 in displayyearlypay | filter: { firstmonth: feetst11.monthdisplay  } : true">
+   <td>{{fee2.feehead_code}}</td><td>{{fee2.feehead_name}}</td><td>{{fee2.amount  || "0"}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-model='dmnpm' ng-repeat="fee1 in displaymonthsamount| orderBy:'feehead_code'">
+   <td>{{fee1.feehead_code}}</td>  <td> {{fee1.feehead_name}} </td>  <td> {{fee1[feetst11.month]}} </td>  </tr>
+   
+   
+   <tr class="freecodeb3" ng-repeat="fee3 in displaybuspay | filter: { monthno: feetst11.no  } : true">
+   <td>{{fee3.feehead_code}}</td><td>{{fee3.feehead_name}} </td><td>{{fee3.amt}}</td>
+   </tr>
+   
+   <tr class="freecodeb3" ng-repeat='fee4 in displaylibfines'>
+   <td>{{fee4.fine_code}}</td><td>{{fee4.finehead_name}}</td><td>{{fee4.amount}}</td>
+   </tr>
+   <tr class="freecodeb3" ng-repeat='fee5 in feefines'>
+   <td>{{fee5.feehead_code}}</td><td>{{fee5.feehead_name}}</td><td>{{fee5.amount}}</td>
+   </tr>
+  
+   </table>
+
+    
+    <div class="tot9">
+  
+   <b>Total : {{ftotal}}</b>
+  <!--  <input type='button' value='pay' ng-click='testpay()'> -->
+    
+   </div>
+    </div>
+	
+
+        </ion-content>
+      </ion-tab>
+
+
+    </ion-tabs>
+	</ion-view>
+</body>

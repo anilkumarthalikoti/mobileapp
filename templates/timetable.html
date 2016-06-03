@@ -1,0 +1,228 @@
+
+<html>
+<head>
+    
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="css/timetable.css" media="screen" type="text/css" />
+   
+    <style>
+	.loading-container .loading {  padding: 20px;  border-radius: 5px;  background-color: rgba(0, 0, 0, 0);  color: #fff;  text-align: center;
+  text-overflow: ellipsis;  font-size: 15px;}
+        .tatotalbox
+        {
+            width: 100%;
+            height: auto;
+            float: left;
+        }
+        .timetableM1
+        {
+            width: 16%;
+            height: auto;
+            float: left;
+            word-break
+        }
+        
+        .hatatotalbox
+        {
+            width: 100%;
+            height: 35px;
+            float: left;
+            border-right: 1px solid #2292bf;
+            background: #87ceeb;            
+        }
+        .hatimetableM1
+        {
+            width: 16%;
+            height: 35px;
+            float: left;
+        }
+        .Periodtext
+        {
+            font: bold 14px Calibri;
+            color: #003d74;
+            text-align: center;
+            margin-top: 8px;
+        }
+        li
+        {            
+            height:50px;
+            border:1px solid #000;
+            text-align:center;            
+        }
+        .cdnametext2 {
+text-align: center;
+font: bold 14px Calibri;
+color: #fff;
+padding: 6px;
+}
+.cdnamebox2 {
+width: 100%;
+    height: 30px;
+    background: #cf2123;
+    position: fixed;
+    top: 44px;
+    z-index: 9;
+}
+.namebox1 {
+width: 100%;
+height: 30px;
+background: #005bab;
+}  
+.nametext2 {
+text-align: center;
+font: bold 14px Calibri;
+color: #fff;
+padding: 6px;
+}
+
+
+li {height: 50px;border: 1px solid #E7E7E7;text-align: center;padding: 17px;}
+.TMleftpanel {width: 30%;height: 45px;float: left;background: #fff;font: normal 15px Arial, Helvetica, sans-serif;color: #025bab;}
+.TMrightpanel {width: 69%;height: 45px;float: left;background: #fff;border-left: 0px solid #DADADA;font: normal 15px Arial, Helvetica, sans-serif;color: #025bab;}
+.TMtimebox1 {width: 100%;height: 45px; float:left;}
+.cldbox{width: 100%;height: 40px;border-bottom: 0px solid #ccc;float: left;}
+.cldleftbox1{width: 30%;height: 45px;float: left;font: bold 13px Arial, Helvetica, sans-serif;color: #025bab;}
+.cldlefttetxpanel{font: bold 13px Arial, Helvetica, sans-serif;color: #025bab;padding: 15px;}
+.cldrightbox1{width: 69%;height: 45px;float: left;font: bold 13px Arial, Helvetica, sans-serif;color: #025bab;}
+.clddropbox21{font: bold 13px Arial, Helvetica, sans-serif;color: #025bab;width: 100%;height: 31px;}
+.downboxcbt{width:100%; height:auto; float:left; margin-top:0px;}
+
+.tab-item.tab-item-active {background:#1d73be;border-bottom: 3px solid #fff; color:#fff;}
+.timebrk1{background:rgb(224, 224, 224);}
+.timebrk11{background:rgb(224, 224, 224);}
+.navlogop1{ float: left;} 
+.navlogop2{    margin-top: 2px;    margin-left: 43px;} 
+.tabs-top > .tabs, .tabs.tabs-top {
+    top: 70px;
+    padding-top: 0;
+    background-position: bottom;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+    </style>
+</head>
+<body ng-controller="MytimeCtrl">
+    <ion-view>
+   <ion-nav-buttons side="left">
+          <div class="navlogop1"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></div>
+    <div class="navlogop2"><img ng-src="img/logo.png" style=" width: 82%;"  /></div>
+  </ion-nav-buttons>
+
+   <div class="cdnamebox2">
+      <div class="cdnametext2"> <span>TIME TABLE</span> </div>
+    </div>
+	
+  <ion-tabs class="tabs-top tabs-positive">
+
+        <ion-tab title="Mon">
+          <ion-content on-swipe-right="goRight()" on-swipe-left="goLeft()" >   
+   
+    <form>
+    
+   
+	<b>{{usermsg}}</b>
+  <div class="TMcontent">
+  <div class="TMtimebox1">
+    <div class="TMleftpanel">
+      <ul ng-repeat="table_day in conditions | orderBy : '-period_no' : true  | filter: { table_day: 'Monday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}"">
+                    <li> {{table_day.period_no}}<br /></li>
+             </ul>
+    </div>
+    <div class="TMrightpanel">
+     <ul ng-repeat="table_day in conditions |orderBy : '-period_no' : true  | filter: { table_day: 'Monday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}" >
+        <li> {{table_day.subject}}   <br /></li>
+    </ul>
+    </div>
+  </div>
+  </div>
+
+    </form>
+
+  </ion-content>
+  </ion-tab>
+  <ion-tab title="Tue">
+ <ion-content on-swipe-right="goRight()" on-swipe-left="goLeft()" >   
+    
+  
+    <div class="TMcontent">
+  <div class="TMtimebox1">
+    <div class="TMleftpanel">
+      <ul ng-repeat="table_day in conditions | orderBy : '-period_no' : true | filter: { table_day: 'Tuesday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}"">
+                    <li> {{table_day.period_no}}<br /></li>
+             </ul>
+    </div>
+    <div class="TMrightpanel">
+     <ul ng-repeat="table_day in conditions | orderBy : '-period_no' :true | filter: { table_day: 'Tuesday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+        <li> {{table_day.subject}}   <br /></li>
+    </ul>
+    </div>
+  </div>
+  </div>
+  </ion-content>
+  </ion-tab>
+  <ion-tab title="Wed">
+  <ion-content on-swipe-right="goRight()" on-swipe-left="goLeft()" >   
+   
+  
+    <div class="TMcontent">
+  <div class="TMtimebox1">
+    <div class="TMleftpanel">
+      <ul ng-repeat="table_day in conditions | orderBy : '-period_no' : true  | filter: { table_day: 'Wednesday'  }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+                    <li> {{table_day.period_no}}<br /></li>
+             </ul>
+    </div>
+    <div class="TMrightpanel">
+     <ul ng-repeat="table_day in conditions |  orderBy : '-period_no' : true | filter: { table_day: 'Wednesday'  }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+        <li> {{table_day.subject}}   <br /></li>
+    </ul>
+    </div>
+  </div>
+  </div>
+
+  </ion-content>
+  </ion-tab>
+  <ion-tab title="Thu">
+  <ion-content on-swipe-right="goRight()" on-swipe-left="goLeft()" >   
+
+    <div class="TMcontent">
+  <div class="TMtimebox1">
+    <div class="TMleftpanel">
+      <ul ng-repeat="table_day in conditions | orderBy : '-period_no' : true | filter: { table_day: 'Thursday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+                    <li> {{table_day.period_no}}<br /></li>
+             </ul>
+    </div>
+    <div class="TMrightpanel">
+     <ul ng-repeat="table_day in conditions | orderBy : '-period_no': true  | filter: { table_day: 'Thursday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+        <li> {{table_day.subject}}   <br /></li>
+    </ul>
+    </div>
+  </div>
+  </div>
+  </ion-content>
+  </ion-tab>
+  <ion-tab title="Fri">
+  <ion-content on-swipe-right="goRight()" on-swipe-left="goLeft()" >   
+   
+
+    <div class="TMcontent">
+  <div class="TMtimebox1">
+    <div class="TMleftpanel">
+      <ul ng-repeat="table_day in conditions | orderBy : '-period_no': true  | filter: { table_day: 'Friday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+                    <li> {{table_day.period_no}}<br /></li>
+             </ul>
+    </div>
+    <div class="TMrightpanel">
+     <ul ng-repeat="table_day in conditions | orderBy : '-period_no' : true | filter: { table_day: 'Friday' }" ng-class="{'timebrk1': table_day.subject == 'Break','timebrk11': table_day.subject == 'Lunch'}">
+        <li> {{table_day.subject}}   <br /></li>
+    </ul>
+    </div>
+  </div>
+  </div>
+  </ion-content>
+  </ion-tab>
+ 
+  </ion-tabs>
+  </ion-view>
+</body>
+</html>

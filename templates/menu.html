@@ -1,0 +1,92 @@
+<style>
+#menuallp1{width: 24px;float: left;}
+</style>
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content edge-drag-threshold="true">
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <header class="bar bar-header bar-stable">
+      <h1 class="title" style="color: #005BAB;">Event Application</h1>
+    </header>
+    <ion-content class="has-header">
+      <ion-list>
+       <ion-item nav-clear menu-close href="#/app/playlists">
+        <i class="icon  ion-home" id="menuallp1"></i>       
+          Home
+        </ion-item>
+		<!-- <ion-item nav-clear menu-close href="#/app/Attendance">
+         <i class="icon ion-checkmark-round" id="menuallp1"></i>
+         Attendance
+        </ion-item> -->
+		<ion-item nav-clear menu-close href="#/app/Performance">        
+         <i class="icon ion-arrow-graph-up-right" id="menuallp1"></i>
+          Performance
+        </ion-item> 
+        <ion-item nav-clear menu-close href="#/app/Awards">
+         
+          <i class="icon ion-university" id="menuallp1"></i>
+          Awards
+        </ion-item>
+		 <ion-item nav-clear menu-close href="#/app/time">
+        <i class="icon ion-calendar" id="menuallp1"></i>
+          Time Table
+        </ion-item>
+		<ion-item nav-clear menu-close href="#/app/Exam">
+         <i class="icon ion-clipboard" id="menuallp1"></i>
+        
+          Examination Schedule
+        </ion-item>
+		<!-- <ion-item nav-clear menu-close href="#/app/p_t_meeting">
+         
+          <i class="icon ion-clock" id="menuallp1"></i>
+          Parents Teacher Meeting
+        </ion-item> -->
+        <ion-item nav-clear menu-close href="#/app/syllabus">
+         <i class="icon ion-document-text" id="menuallp1"></i>
+          Syllabus
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/circularnotice">  
+        <i class="icon ion-social-instagram" id="menuallp1"></i>    
+          Circular/Notice
+        </ion-item>
+        <ion-item menu-close href="#/app/coc">
+        <i class="icon ion-compose" id="menuallp1"></i>
+          Code of Conduct
+        </ion-item>
+		<ion-item menu-close href="#/app/gps">
+        <i class="icon ion-location" id="menuallp1"></i>
+          GPS
+        </ion-item>
+		<!-- <ion-item nav-clear menu-close href="#/app/fee">        
+        <i class="icon ion-social-usd" id="menuallp1"></i>       
+          Fee 
+        </ion-item>  -->
+         <ion-item nav-clear menu-close href="#/app/SuccessPage"  style="display:none">
+          SuccessPage
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/InfoPage"  style="display:none">
+        <i class="icon ion-information-circled" id="menuallp1"></i>
+        
+          Information
+        </ion-item>
+		<ion-item menu-close href="#/app/feedback">
+        <i class="ion-chatboxes" id="menuallp1"></i>
+          FeedBack
+        </ion-item>
+		<ion-item nav-clear menu-close href="#/app/support"  style="display:block">
+      <i class="icon ion-help-buoy" id="menuallp1"></i>
+          Support
+        </ion-item>
+        <ion-item nav-clear menu-close ng-click="logout()" style="display:block">
+        <i class="icon ion-log-out" id="menuallp1"></i>
+          Log Out
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

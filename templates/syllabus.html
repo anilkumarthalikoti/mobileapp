@@ -1,0 +1,45 @@
+<style>
+.namebox1 {	width: 100%;	height: 30px;	background: #005bab; margin-top:44px;}
+.nametext2 {	text-align: center;	font: bold 14px Calibri;	color: #fff;	padding: 6px;}
+.cdnamebox2 {    width: 100%;    height: 30px;    background: #cf2123;    margin-top: 44px;    position: fixed;    z-index: 9;}
+.cdnametext2 {	text-align: center;	font: bold 14px Calibri;	color: #fff;	padding: 6px;}
+.navlogop1{ float: left;}  
+.navlogop2{    margin-top: 2px;    margin-left: 43px;}
+.syllabusscpl1{       padding: 15px;    margin-top: 31px;}
+.img src{width:10%;}
+.loading-container .loading {  padding: 20px;  border-radius: 5px;  background-color: rgba(0, 0, 0, 0);  color: #fff;  text-align: center;
+  text-overflow: ellipsis;  font-size: 15px;}
+  .has-header {
+    top: 67px;
+}
+</style>  
+
+
+      <ion-view id="comic-view" ng-controller='syllabus'>
+<ion-nav-buttons side="left">
+       <div class="navlogop1"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></div>
+    <div class="navlogop2"><img ng-src="img/logo.png" style=" width: 82%;"  /></div>
+</ion-nav-buttons>
+ <div class="cdnamebox2">
+    <div class="cdnametext2"> <span>Syllabus</span> <span style="float: right; margin-top: -5px;"><img src="img/sydownload.png" ng-click='downloadSyllabus()'/></span></div>
+  </div>
+       
+  <ion-content class="padding">
+  <div ng-controller="syllabus">
+
+
+  <ion-scroll zooming="true" direction="xy" style="width: auto;    height: 800px;    overflow: scroll; ">
+
+  
+    <img id="simg" actual-src ="http://183.82.8.39:9090/syllabus/{{classn}}.jpg" ng-src="img/loadingpane15.gif" style="width: 250%; height: 100%; "  err-src="img/na.jpg"> 
+	<div style="width:100%; height:190px; float:left;"></div>
+ </ion-scroll>
+    
+	
+    </ion-content>
+        </ion-view>
+      
+
+
+
+  

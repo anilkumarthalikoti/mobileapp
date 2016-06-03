@@ -1,0 +1,738 @@
+<head>
+<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+  <!--  <link href="css/att.css" rel="stylesheet" type="text/css" /> -->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<style>
+
+        .tab-item.tab-item-active
+        {
+            background: #1d73be;
+            border-bottom: 3px solid #fff;
+            color: #fff;
+        }
+		
+		
+	/** For the task list header columns and tasks **/
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+.loading-container .loading {  padding: 20px;  border-radius: 5px;  background-color: rgba(0, 0, 0, 0);  color: #fff;  text-align: center;
+  text-overflow: ellipsis;  font-size: 15px;}
+.wrap    {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 320px) {
+
+    .flex-container.wrap > div{
+        width: 50%;
+        max-width: 50%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+
+}
+
+@media (min-width: 321px) {
+    .flex-container.wrap > div{
+        width: 33%;
+        max-width: 33%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 480px) {
+    .flex-container.wrap > div{
+        width: 25%;
+        max-width: 25%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 640px) {
+    .flex-container.wrap > div{
+        width: 20%;
+        max-width: 20%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 960px) {
+    .flex-container.wrap > div{
+        width: 15%;
+        max-width: 15%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+.low-pad-item {
+    padding: 0;
+    margin: 0;
+}
+
+.col-header {
+    font-weight: bold;
+}
+
+.column {
+    text-overflow: '';
+    white-space:nowrap;
+    overflow: hidden;
+    max-width: 87%;
+    float: left;
+    padding: 2px 5px;
+}
+
+.col-header > .column {
+    padding: 5px 5px;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.column-sort {
+    min-width:13%;
+    float: right;
+    text-align: right;
+    padding-right: 2px;
+}
+.acbox1{ width:100%; height:auto;}
+.acyearbox1{ width: 97%;height: 35px;margin: 12px;}
+.acyeartext{width:50%; height:35px; float:left;}
+.acdropbox1{ width:50%; height:35px; float:left;}
+.acytext1{font:normal 14px Verdana, Arial, Helvetica, sans-serif;  color:#005baa; margin:8px 0px 0px 0px;}
+
+.acytext2{font:normal 14px Verdana, Arial, Helvetica, sans-serif;  color:#005bae;}
+
+.yearclass1new1{width:100%; height:19px; line-height:18px;font:normal 13px Verdana, Arial, Helvetica, sans-serif;  color:#005bae; -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;}
+.aclinebox1{width:100%; height:1px; background:#ccc;}
+.actotalbox1{ width:100%; height:auto; background: rgba(247, 247, 247, 0.43);}	
+	
+	
+	.awdcontent{width:100%; height:100px; background:#f2f2f2;     margin-top: 26px;}
+.awdbox1{width:100%; height:42px; border-bottom:2px solid #005baa;}
+.awdsubbox1{width:100%; height:42px; float:left;}
+.awdsboxcontent1{width:49%; height:42px; float:left; border-right:1px solid #005baa;}
+.awdsboxcontent2{width:49%; height:42px; float:left;}
+.awdactect{width: 38%;height: 28px;float: left;font: normal 14px Verdana, Arial, Helvetica, sans-serif;color: #000;padding: 12px 0px 0px 5px;
+/* word-break: break-all; */line-height: 14px;}
+
+.awdactect20{width: 30%;height: 28px;float: left;font: normal 14px Verdana, Arial, Helvetica, sans-serif;color: #000;padding: 12px 0px 0px 5px;
+/* word-break: break-all; */line-height: 14px;}
+
+
+.tabs-top > .tabs, .tabs.tabs-top {
+    top: 70px;
+    padding-top: 0;
+    background-position: bottom;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+	.info1 {width: 100%;height: 133px;}
+.infobox1 {width: 50%;height: 133px;float: left;}
+.gridbox1 {width: 100%;height: auto;margin: 20px 0px 40px 0px;}
+.cdnametext2 {text-align: center;font: bold 14px Verdana, Arial, Helvetica, sans-serif;color: #fff;padding: 6px;}
+.cdnamebox2 {    width: 100%;    height: 30px;    background: #cf2123;    position: fixed;    top: 44px;    z-index: 9;}
+.namebox1 {width: 100%;height: 30px;background: #005bab;}
+
+.awredsbox1{width:100%; height:30px; border-bottom:2px solid #085fae;}	
+.awdleftbox1{width:49%; height:30px; float:left; border-right:1px solid #d8d8d8;}
+.awdleftbox2{width:49%; height:30px; float:left; border-right:0px solid #d8d8d8;}
+.awdclasstext{text-align:center; font:normal 14px Verdana, Arial, Helvetica, sans-serif; color:#0072D8; padding:6px;}
+.awdclasstext1{text-align:center; font:normal 14px Verdana, Arial, Helvetica, sans-serif; color:#595959; padding:6px;}
+
+.adccontent{    width: 100%;    height: auto;    margin-bottom: 160px;    overflow: auto;    float: left;}
+.adcboxtotal{width:100%; height:35px; float:left; background:#005baa;}
+.adcbox1{width:22%; height:35px; float:left;}
+.adcbox2{width:35%; height:35px; float:left;}
+.adcbox3{width:21%; height:35px; float:left;}
+.adcbox4{width:22%; height:35px; float:left;}
+
+
+.paadcbox1{width:22%; height:auto; float:left;}
+.paadcbox2{width:35%; height:auto; float:left;}
+.paadcbox3{width:21%; height:auto; float:left;}
+.paadcbox4{width:22%; height:auto; float:left;}
+
+.adcnametetx{font:normal 13px Verdana, Arial, Helvetica, sans-serif; color:#fff; padding:7px; text-align:center;}
+.adcboxtotalsub{width:100%; height:auto; float:left;}
+.adcsubnametetx{font: normal 13px Verdana, Arial, Helvetica, sans-serif;color: #005baa;padding: 0px;}
+.adclinebox1{width:100%; height:1px; background:#bfdbff; float:left;}
+.abctotalbox1{ height: 40px;padding: 5px;border: 1px solid #ccc;overflow: auto;text-align: center;line-height: 18px;}
+.adcboxtotaltop1{width:100%; height:auto; float:left; background:rgba(199, 229, 255, 0.47);}
+.adcnametetx2{font:normal 13px Verdana, Arial, Helvetica, sans-serif; color:#004989; padding:7px; text-align:center;}
+.mawardsboxfl1{width: 100%;height: auto;background: #F4F4F4;border-bottom: 1px solid #ccc;
+padding: 2px;float: left;}
+	
+.adcbox1sub1{width:32%; height:35px; float:left;}
+.adcbox1sub2{width:32%; height:35px; float:left;}
+.adcbox1sub3{width:30%; height:35px; float:left;}
+.noawtext1{width:98%; height:auto;font: normal 14px Verdana, Arial, Helvetica, sans-serif;color: #AA003A;text-align:center;float: left; padding:0px; }
+
+
+</style>   
+
+    <style>
+	/** For the task list header columns and tasks **/
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.wrap    {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 320px) {
+
+    .flex-container.wrap > div{
+        width: 50%;
+        max-width: 50%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+
+}
+
+@media (min-width: 321px) {
+    .flex-container.wrap > div{
+        width: 33%;
+        max-width: 33%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 480px) {
+    .flex-container.wrap > div{
+        width: 25%;
+        max-width: 25%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 640px) {
+    .flex-container.wrap > div{
+        width: 20%;
+        max-width: 20%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 960px) {
+    .flex-container.wrap > div{
+        width: 15%;
+        max-width: 15%;
+        text-overflow: '';
+        white-space:nowrap;
+        overflow: hidden;
+    }
+}
+
+.low-pad-item {
+    padding: 0;
+    margin: 0;
+}
+
+.col-header {
+    font-weight: bold;
+}
+
+.column {
+    text-overflow: '';
+    white-space:nowrap;
+    overflow: hidden;
+    max-width: 87%;
+    float: left;
+    padding: 2px 5px;
+}
+
+.col-header > .column {
+    padding: 5px 5px;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.column-sort {
+    min-width:13%;
+    float: right;
+    text-align: right;
+    padding-right: 2px;
+}
+.acbox1{ width:100%; height:auto;}
+.acyearbox1{ width: 97%;height: 35px;margin: 12px;}
+.acyeartext{width:50%; height:35px; float:left;}
+.acdropbox1{ width:50%; height:35px; float:left;}
+.acytext1{font:normal 14px Verdana, Arial, Helvetica, sans-serif;  color:#005baa; margin:8px 0px 0px 0px;}
+
+.acytext2{font:normal 14px Verdana, Arial, Helvetica, sans-serif;  color:#005bae;}
+
+.yearclass1new1{width:100%; height:19px; line-height:18px;font:normal 13px Verdana, Arial, Helvetica, sans-serif;  color:#005bae; -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;}
+.aclinebox1{width:100%; height:1px; background:#ccc;}
+.actotalbox1{ width:100%; height:auto; background: rgba(247, 247, 247, 0.43);}	
+	
+	
+	.awdcontent{width:100%; height:100px; background:#f2f2f2;}
+.awdbox1{width:100%; height:42px; border-bottom:2px solid #005baa;}
+.awdsubbox1{width:100%; height:42px; float:left;}
+.awdsboxcontent1{width:49%; height:42px; float:left; border-right:1px solid #005baa;}
+.awdsboxcontent2{width:49%; height:42px; float:left;}
+
+.awdactectdrop{width: 60%;height: 26px;float: left;font: normal 14px Verdana, Arial, Helvetica, sans-serif;color: #000;padding: 10px 0px 0px 9px;word-break: break-all;}
+.awdactectdrop21{width: 66%;height: 26px;float: left;font: normal 14px Verdana, Arial, Helvetica, sans-serif;color: #000;padding: 10px 0px 0px 9px;word-break: break-all;}
+
+	.info1 {width: 100%;height: 133px;}
+.infobox1 {width: 50%;height: 133px;float: left;}
+.gridbox1 {width: 100%;height: auto;margin: 20px 0px 40px 0px;}
+.cdnametext2 {text-align: center;font: bold 13px Verdana, Arial, Helvetica, sans-serif;color: #fff;padding: 6px;}
+.cdnamebox2 {    width: 100%;    height: 30px;    background: #cf2123;    position: fixed;    top: 44px;    z-index: 9;}
+.namebox1 {width: 100%;height: 30px;background: #005bab;}
+.nametext2 {text-align: center;font: normal 13px Verdana, Arial, Helvetica, sans-serif;color: #fff;padding: 6px;}
+.awredsbox1{width:100%; height:30px; border-bottom:2px solid #085fae;}	
+.awdleftbox1{width:49%; height:30px; float:left; border-right:1px solid #d8d8d8;}
+.awdleftbox2{width:49%; height:30px; float:left; border-right:0px solid #d8d8d8;}
+.awdclasstext{text-align:center; font:normal 14px Verdana, Arial, Helvetica, sans-serif; color:#0072D8; padding:6px;}
+.awdclasstext1{text-align:center; font:normal 14px Verdana, Arial, Helvetica, sans-serif; color:#595959; padding:6px;}
+
+.cldbox {width:100%;height:35px;border:0px solid #000;margin-bottom:9px;}
+.cldleftbox1 {width:27%;height:35px;float:left;}
+.cldrightbox1 {width:66%;height:35px;float:left;}
+.cldlefttetxpanel {font:normal 13px Verdana, Arial, Helvetica, sans-serif;color:#000;padding:6px;}
+.clddropbox1 {font:normal 13px Verdana, Arial, Helvetica, sans-serif;color:#000;}
+.clddropbox2 {width: 97%;height: 26px;margin: 4px;}
+.cldsubcontentbox1 {width:100%;height:35px;background:#8ec1ee;     float: left;}
+.cldscbox1 {width:100%;height:35px;float:left;}
+.cldsclevtpanel {width:36%;height:35px;float:left;	border-right:1px solid #4084C0;}
+.cldscrightpanel {width:63%;height:35px;float:left;}
+.cldscawardstext {font:normal 13px Verdana, Arial, Helvetica, sans-serif;color:#000;padding:7px;text-align:center;}
+.cldsubcontentbox2 {width:100%;height:auto;}
+.cldscsubbox1 {width:100%;	height:auto;}
+.cldstudnetid {	padding:0px;	font:normal 12px Verdana, Arial, Helvetica, sans-serif;	color:#000;	text-align:center;}
+.cldscawardstextads {	padding:0px;	font:normal 12px Verdana, Arial, Helvetica, sans-serif;	color:#000;	text-align:center;}
+.cldscbox1subheader1 {	width:100%;	height:auto;	float:left;	border-bottom:1px solid #ccc;}
+.cldscrightpanelbox1 {	width:63%;	height:auto;	float:left;	background:#f7f7f7;	border-left: 1px solid #ccc;}
+.cldsclevtpanelbox3 {	width:36%;	height:auto;	float:left;	border-right:0px solid #4084C0;}
+body{margin:0px; padding:0px;}
+.adtotalbox1{height: 50px;border: 1px solid #ccc;padding:16px 0px 0px 0px;margin: 0px; overflow:auto;}
+.adtotalbox2{height: 50px;border: 1px solid #ccc;padding: 4px;margin: 0px; overflow:auto;}
+.navlogop1{ float: left;}
+.Readingtexb1{    width: 100%;    padding: 10px;    float: left;}
+.downpam1{width:100%; height:100px; background:#fff;    float: left;}
+.navlogop2{    margin-top: 2px;    margin-left: 43px;}
+
+
+
+	</style>
+	</head>
+<ion-view title="">
+  <ion-nav-buttons side="left">
+      <div class="navlogop1"><button menu-toggle="left" class="button button-icon icon ion-navicon"></button></div>
+    <div class="navlogop2"><img ng-src="img/logo.png"  style=" width: 82%;" /></div>
+  </ion-nav-buttons>
+   <div class="cdnamebox2">
+      <div class="cdnametext2"> <span>Awards</span> </div>
+    </div>
+      
+
+
+    <ion-tabs class="tabs-top tabs-positive">
+
+        <ion-tab title="Awards" ng-controller="AwardsTest">
+   
+
+
+        <ion-content class="has-header">
+  
+   
+    
+	  
+	  
+	  <div ng-controller="AwardsTest">
+	   <div class="awdcontent">
+  <div class="awdbox1">
+    <div class="awdsubbox1">
+      <div class="awdsboxcontent1">
+        <div class="awdactect20">A.Yr.</div>
+        <div class="awdactectdrop21"><select data-ng-model="mAcademicyear" class="yearclass1new1" data-ng-options="year.spacademicyears for year in academicYears" ng-change="selectYear()">
+   </select></div>
+      </div>
+      <div class="awdsboxcontent2">
+        <div class="awdactect">Branch</div>
+        <div class="awdactectdrop"> <select ng-model="mBranches" class="yearclass1new1" ng-options="year.branchname for year in DataBranch" ng-change="selectBranch()">
+   <option value="">Choose Branch</option>
+   </select></div>
+      </div>
+    </div>
+  </div>
+  <div class="awdbox1">
+    <div class="awdsubbox1">
+      <div class="awdsboxcontent1">
+        <div class="awdactect20">Class</div>
+        <div class="awdactectdrop21"> 
+
+		<select ng-model="mClassName" class="yearclass1new1" ng-options="year.class for year in Classes | filter:mclass| unique:'class'" ng-change="selectClasses()">
+   <option value="">Choose Class</option>
+   </select></div>
+      </div>
+      <div class="awdsboxcontent2">
+        <div class="awdactect">Awards</div>
+        <div class="awdactectdrop"><select ng-model="mAwardes" class="yearclass1new1" ng-options="c.subcategoryname for c in Awards | filter:mClassName.class|filter:mBranches.branchname |filter:mAcademicyear.spacademicyears   | unique:'subcategoryname'" ng-change="displayData()">
+      <option value="">Choose Award</option>
+    </select></div>
+      </div>
+	
+    </div>
+  </div>
+</div>
+	  
+	 
+	  <div class="adcboxtotaltop1">
+				<div class="adcbox1sub1">
+					<div class="adcnametetx2">{{mAcademicyear.spacademicyears}}</div>
+				</div>
+				<div class="adcbox1sub2">
+				<div class="adcnametetx2">{{mBranches.branchname}}</div>
+				</div>
+				<div class="adcbox1sub3">
+				<div class="adcnametetx2">{{mClassName.class}}</div>
+				</div>
+				
+			</div>
+    <div class="mawardsboxfl1">
+				<div class="adcnametetx2">{{mAwardes.subcategoryname}}{{noawmessage}}</div>
+				</div>
+			
+                <div><b>{{defaultmsg}}</b></div>
+			<ion-list>
+
+			
+			
+			<div class="adccontent" ng-show="awardstudent">
+			<div class="adcboxtotal">
+				<div class="adcbox1">
+					<div class="adcnametetx">ID</div>
+				</div>
+				<div class="adcbox2">
+				<div class="adcnametetx">Award Name</div>
+				</div>
+				
+			</div>
+			
+			<div class="adcboxtotalsub">
+           
+				<div class="paadcbox1">
+					<div class="adcsubnametetx">
+					  <div  ng-repeat="item in studentawrdss | orderBy:sortData:data.sortReverse ">
+                <div class="abctotalbox1">
+                    <div ng-repeat="column in data.columns">
+                        <div >{{item[column.id]}}</div>
+                    </div>
+                </div>
+            </div>  
+					
+					</div>
+				</div>
+				<div class="paadcbox2">
+				<div class="adcsubnametetx">
+				<div  ng-repeat="item in studentawrdss | orderBy:sortData:data.sortReverse ">
+                 <div class="abctotalbox1">
+                    <div ng-repeat="column in data.columns">
+                        <div >{{item[column.id1]}}</div>
+                    </div>
+                </div>
+            </div>  
+				
+				
+				</div>
+				</div>
+		
+			
+               
+				
+			</div>
+			</div>
+            </ion-list>
+ <ion-list>
+			 <div class="noawtext1">{{table1}}</div> 
+			<div class="adccontent" ng-show="awardsection">
+			<div class="adcboxtotal">
+				<div class="adcbox1">
+					<div class="adcnametetx">ID</div>
+				</div>
+				<div class="adcbox2">
+				<div class="adcnametetx">Name</div>
+				</div>
+				<div class="adcbox3">
+				<div class="adcnametetx">Class</div>
+				</div>
+				<div class="adcbox4">
+				<div class="adcnametetx">Section</div>
+				</div>
+			</div>
+			
+			<div class="adcboxtotalsub">
+           
+				<div class="paadcbox1">
+					<div class="adcsubnametetx">
+					  <div  ng-repeat="item in awardname |filter: tableaward| orderBy:sortData:data.sortReverse ">
+                <div class="abctotalbox1">
+                    <div ng-repeat="column in data.columns">
+                        <div >{{item[column.id]}}</div>
+                    </div>
+                </div>
+            </div>  
+					
+					</div>
+				</div>
+				<div class="paadcbox2">
+				<div class="adcsubnametetx">
+				<div  ng-repeat="item in awardname | filter: tableaward | orderBy:sortData:data.sortReverse ">
+                 <div class="abctotalbox1">
+                    <div ng-repeat="column in data.columns">
+                        <div >{{item[column.id1]}}</div>
+                    </div>
+                </div>
+            </div>  
+				
+				
+				</div>
+				</div>
+				<div class="paadcbox3">
+				<div class="adcsubnametetx">
+				<div  ng-repeat="item in awardname |filter: tableaward| orderBy:sortData:data.sortReverse ">
+                <div class="abctotalbox1">
+                    <div ng-repeat="column in data.columns">
+                        <div >{{item[column.id2]}}</div>
+                    </div>
+                </div>
+            </div>  
+				
+				
+				</div>
+				</div>
+				<div class="paadcbox4">
+				<div class="adcsubnametetx">
+				<div  ng-repeat="item in awardname |filter: tableaward | orderBy:sortData:data.sortReverse ">
+                <div class="abctotalbox1">
+                    <div ng-repeat="column in data.columns">
+                        <div >{{item[column.id3]}}</div>
+                    </div>
+                </div>
+            </div>  
+				
+				
+				</div>
+				</div>
+               
+			   
+				
+			</div>
+			
+			<div style="width:100%; height:190px; float:left;"></div>
+			
+			</div>
+			
+			
+
+                
+      </ion-list>
+	  
+	 </div> 
+	  
+       
+		  
+
+        </ion-content>
+      </ion-tab>
+
+
+
+
+
+      <ion-tab  title="Class Awards">
+     
+        <ion-content has-header="true">
+ 
+      
+   
+      
+       
+	   
+	   
+      <div ng-controller="AwardsTest" ng-init="displayClassAwards()">
+	  
+ <div class="cldcontent" style="    margin-top: 34px;">    
+  <div class="cldbox">
+    <div class="cldleftbox1">
+      <div class="cldlefttetxpanel">A.Yr.</div>
+    </div>
+    <div class="cldrightbox1">
+      <div class="clddropbox1">
+               
+      <select data-ng-model="mCAcademicyear" class="clddropbox2" data-ng-options="year.spacademicyears for year in academicYears" ng-change="selectBranchC()">
+   </select>
+        
+      </div>
+    </div>
+  </div> 
+  <div class="cldbox">
+    <div class="cldleftbox1">
+      <div class="cldlefttetxpanel">Branch</div>
+    </div>
+    <div class="cldrightbox1">
+      <div class="clddropbox1">
+               
+        <select ng-model="mCBranches" class="clddropbox2"  ng-options="year.branchname for year in DataBranch" ng-change="selectBranchC()" >
+   <option value="">Choose Branch</option>
+   </select>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cldbox">
+    <div class="cldleftbox1">
+      <div class="cldlefttetxpanel">Class</div>
+    </div>
+    <div class="cldrightbox1">
+      <div class="clddropbox1">
+             <select ng-model="mCClassName" class="clddropbox2" ng-options="year.class for year in Classes | filter:mCCfilter | unique:'class'" ng-change="selectClassC()"  > <!-- filter:mCBranches.Branch" -->
+   <option value="">Choose Class</option>
+   </select>
+      </div>
+    </div>
+  </div>
+  <div class="cldbox">
+    <div class="cldleftbox1">
+      <div class="cldlefttetxpanel">Section</div>
+    </div>
+    <div class="cldrightbox1">
+      <div class="clddropbox1">
+       <select ng-model="mCSection" class="clddropbox2" ng-options="year.section for year in Sections | filter:mCSfilter | unique:'section' " ng-change="displayClassAwards()" >
+   <option value="">Choose Section</option>
+   </select>
+      </div>
+    </div>
+  </div>
+   </div> 
+	<div class="noawtext1">{{AwardResponse}}</div> 
+	
+	<div ng-show="classawardsection" style="    margin-bottom: 180px;    width: 100%;    float: left;    overflow: auto;">
+   <div class="cldsubcontentbox1">
+    <div class="cldscbox1">
+      <div class="cldsclevtpanel">
+        <div class="cldscawardstext">AWARDS</div>
+      </div>
+      <div class="cldscrightpanel">
+        <div class="cldscawardstext">ID / NAME</div>
+      </div>
+    </div>
+  </div>  
+  
+      
+ 
+       <!--  <div ><select data-ng-model="mCAcademicyear" style="display: none;" data-ng-options="year.spacademicyears for year in academicYears" ng-change="selectYear()">
+   </select></div> -->
+
+
+
+ <ion-list>
+
+
+			
+			<div class="cldsubcontentbox2">
+    <div class="cldscbox1subheader1">
+      <div class="cldsclevtpanelbox3">
+        <div class="cldscawardstextads">
+		<div ng-repeat="item in awardname |filter:classaward| orderBy:sortData:data.sortReverse ">
+                <div class="adtotalbox1">
+                    <div ng-repeat="column in data.Classcolumns">
+                        <div>{{item[column.id]}}</div>
+						
+                    </div>
+                </div>
+                
+            </div>  
+		
+		</div>
+      </div>
+	  
+	 
+	  
+      <div class="cldscrightpanelbox1">
+	  
+        <div class="cldscsubbox1">
+          <div class="cldstudnetid">
+		  <div ng-repeat="item in awardname |filter:classaward| orderBy:sortData:data.sortReverse ">
+               <div class="adtotalbox2">
+                    <div ng-repeat="column in data.Classcolumns">
+                        <div>{{item[column.id1]}}</div>
+						<div>{{item[column.id2]}}</div>
+                    </div>
+               </div>
+                
+            </div>  
+		  
+		  </div>
+        </div>
+        </div>
+		
+      </div>
+    </div>
+  </div>
+<div style="width:100%; height:190px; float:left;"></div>
+                  
+      </ion-list>
+   </div>
+        </ion-content>
+      </ion-tab>
+
+
+    </ion-tabs>
+	</ion-view>
