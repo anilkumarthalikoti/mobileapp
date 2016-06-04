@@ -11,9 +11,22 @@ angular.module("eventapp.controllers",[])
         };
 
     })
-	 .controller('HomeCtrl', function ($scope, $state) { 
-
-    })
+	 .controller('HomeCtrl', function($scope,fileUpload){
+            $scope.uploadFile = function(){
+               var file = $scope.myFile;
+               
+               console.log('file is ' );
+              // console.dir(file);
+               
+               var uploadUrl = "/fileUpload";
+               fileUpload.uploadFileToUrl(file, uploadUrl);
+            }
+			
+			$scope.openimage=function(){
+			document.getElementById("imageupload").click();
+			
+			}
+         })
  
     .controller('LoginCtrl', function ($scope, $state) {
  $scope.username="";
@@ -26,7 +39,7 @@ angular.module("eventapp.controllers",[])
 		 
  if(user=="demo" && user==pwd){
   
-// $location.path("/app/home.html");
+  $state.go("app.home");
  
  }
            
