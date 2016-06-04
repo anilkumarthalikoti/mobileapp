@@ -10,7 +10,7 @@ angular.module("eventapp",["ionic","eventapp.controllers"])
         });
 
         $rootScope.$on('$stateChangeStart', function(event, toState) {
-            if (toState.name !== "app.login" && toState.name !== "app.logout" && !$window.sessionStorage['eventapp']) {
+            if (toState.name !== "app.login" && toState.name !== "app.logout" ) {
                 $state.go('app.login');
                 event.preventDefault();
             }
@@ -39,7 +39,15 @@ angular.module("eventapp",["ionic","eventapp.controllers"])
                     }
                 }
             })
-
+.state('app.home', {
+                url: "/home",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/home.html",
+                        controller: "HomeCtrl"
+                    }
+                }
+            })
             .state('app.logout', {
                 url: "/logout",
                 views: {
