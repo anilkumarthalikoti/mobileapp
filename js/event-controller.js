@@ -11,7 +11,10 @@ angular.module("eventapp.controllers",[])
         };
 
     })
-//LOgin Controler
+	 .controller('HomeCtrl', function ($scope, $state) { 
+
+    })
+ 
     .controller('LoginCtrl', function ($scope, $state) {
  $scope.username="";
  $scope.password="";
@@ -20,36 +23,17 @@ angular.module("eventapp.controllers",[])
         $scope.doLogin = function () {
 		var user=$scope.username;
 		var pwd=$scope.password;
+		 
  if(user=="demo" && user==pwd){
+  
+// $location.path("/app/home.html");
  
- $state.go("app.home");
  }
            
         };
 
     })
-	//HOme controller
-    .controller('HomeCtrl', function ($scope, $state) {
- $scope.username="";
- $scope.password="";
  
- 
-        $scope.doLogin = function () {
-		var user=$scope.username;
-		var pwd=$scope.password;
- if(user=="demo" && user==pwd){
- 
- $state.go("app.home");
- }
-           
-        };
-
-    })	
-	
-	
-	
-	
-	
-	;
+   ;
 
     

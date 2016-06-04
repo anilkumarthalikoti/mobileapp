@@ -1,4 +1,4 @@
-angular.module("eventapp",["ionic","eventapp.controllers"])
+angular.module("eventapp",['ionic','eventapp.controllers'])
  .run(function ($rootScope, $state, $ionicPlatform, $window) {
 
     
@@ -21,16 +21,24 @@ angular.module("eventapp",["ionic","eventapp.controllers"])
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
-        $stateProvider
+     
 
-            .state('app', {
+            $stateProvider .state('app', {
                 url: "/app",
                 abstract: true,
                 templateUrl: "templates/menu.html",
                 controller: "AppCtrl"
-            })
-
-            .state('app.login', {
+            });
+ $stateProvider.state('app.playlist', {
+                url: "/playlist",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/playlist.html",
+                        controller: "HomeCtrl"
+                    }
+                }
+            });
+           $stateProvider .state('app.login', {
                 url: "/login",
                 views: {
                     'menuContent': {
@@ -38,17 +46,11 @@ angular.module("eventapp",["ionic","eventapp.controllers"])
                         controller: "LoginCtrl"
                     }
                 }
-            })
-.state('app.home', {
-                url: "/home",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/home.html",
-                        controller: "HomeCtrl"
-                    }
-                }
-            })
-            .state('app.logout', {
+            });
+			
+
+			
+             $stateProvider.state('app.logout', {
                 url: "/logout",
                 views: {
                     'menuContent': {
